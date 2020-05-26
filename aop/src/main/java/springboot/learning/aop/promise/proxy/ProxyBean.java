@@ -1,7 +1,7 @@
-package springboot.learning.aop.proxy;
+package springboot.learning.aop.promise.proxy;
 
-import springboot.learning.aop.interceptor.Interceptor;
-import springboot.learning.aop.model.Invocation;
+import springboot.learning.aop.promise.interceptor.Interceptor;
+import springboot.learning.aop.promise.model.Invocation;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

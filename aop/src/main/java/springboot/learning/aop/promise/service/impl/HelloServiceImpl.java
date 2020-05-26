@@ -1,6 +1,6 @@
-package springboot.learning.aop.service.impl;
+package springboot.learning.aop.promise.service.impl;
 
-import springboot.learning.aop.service.HelloService;
+import springboot.learning.aop.promise.service.HelloService;
 
 /**
  * @author mrliz

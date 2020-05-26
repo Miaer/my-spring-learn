@@ -1,7 +1,7 @@
-package springboot.learning.aop.interceptor.impl;
+package springboot.learning.aop.promise.interceptor.impl;
 
-import springboot.learning.aop.interceptor.Interceptor;
-import springboot.learning.aop.model.Invocation;
+import springboot.learning.aop.promise.interceptor.Interceptor;
+import springboot.learning.aop.promise.model.Invocation;
 
 import java.lang.reflect.InvocationTargetException;
 

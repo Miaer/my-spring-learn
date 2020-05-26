@@ -1,4 +1,4 @@
-package springboot.learning.aop.model;
+package springboot.learning.aop.promise.model;
 
 import lombok.Data;
 

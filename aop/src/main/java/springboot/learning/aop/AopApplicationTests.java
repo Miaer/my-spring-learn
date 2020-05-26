@@ -2,10 +2,10 @@ package springboot.learning.aop;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import springboot.learning.aop.interceptor.impl.MyInterceptor;
-import springboot.learning.aop.proxy.ProxyBean;
-import springboot.learning.aop.service.HelloService;
-import springboot.learning.aop.service.impl.HelloServiceImpl;
+import springboot.learning.aop.promise.interceptor.impl.MyInterceptor;
+import springboot.learning.aop.promise.proxy.ProxyBean;
+import springboot.learning.aop.promise.service.HelloService;
+import springboot.learning.aop.promise.service.impl.HelloServiceImpl;
 
 @SpringBootTest
 class AopApplicationTests {
