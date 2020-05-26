@@ -9,7 +9,7 @@ ________________________________________________________________________________
 Spring AOP是一种基于方法的AOP，只能应用于方法上。
 
 术语：
-
+====
 连接点(join point)：对应的是具体被拦截的对象，因为Spring只能支持方法，所以被拦截的对象往往是指特定的方法。HelloServiceImpl的sayHello方法就是一个连接点。AOP通过动态代理的技术把它织入对应的流程中去。
 
 切点(point cut)：有时候，我们的切面不单单应用于单个方法，也可能是多个类的不同方法，这时，可以通过正则式和指示器的规则去定义。切点就是提供这样功能的一个概念。
@@ -31,10 +31,32 @@ Spring AOP是一种基于方法的AOP，只能应用于方法上。
 ___________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 AspectJ 注解开发
-
+====
 因为Spring AOP只能对方法进行拦截，首先要确定的就是拦截什么方法，让它能织入约定的流程中。
 
 确定连接点
+--
     任何AOP编程，首先确定的是在什么地方需要AOP，也就是需要确定连接点(什么类什么方法)的问题。
     
 在aspectJ包中，现有一个UserService接口及其实现类UserServiceImpl。下面将以UserServiceImpl中printUser方法为连接点，进行AOP编程。
+
+
+正则匹配参数解释
+--
+execution(* springboot.learning.aop.aspectJ.service.impl.UserInterfaceImpl.printUser(..))
+
+    execution: 表示在执行的时候，拦截里面的正则匹配的方法
+    * :表示任意返回类型的方法
+    springboot.learning.aop.aspectJ.service.impl.UserInterfaceImpl:指定目标对象的全限定名称
+    printUser：指定目标对象的方法
+    (..)：表示任意参数进行匹配
+
+指定类的方法进入AOP流程
+--
+execution(* springboot.learning.aop.aspectJ.service.impl.UserInterfaceImpl.printUser(..) && bean('userServiceImpl'))
+
+上述表达式中，"&&"表示并且，bean中定义的字符串为Spring bean名称的限定
+    
+
+    
+    

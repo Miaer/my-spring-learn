@@ -2,7 +2,7 @@ package springboot.learning.aop.aspectJ.service.impl;
 
 import org.springframework.stereotype.Service;
 import springboot.learning.aop.aspectJ.model.User;
-import springboot.learning.aop.aspectJ.service.UserInterface;
+import springboot.learning.aop.aspectJ.service.UserService;
 
 
 /**
@@ -10,7 +10,7 @@ import springboot.learning.aop.aspectJ.service.UserInterface;
  */
 
 @Service
-public class UserInterfaceImpl implements UserInterface {
+public class UserServiceImpl implements UserService {
 
     @Override
     public void printUser(User user) {

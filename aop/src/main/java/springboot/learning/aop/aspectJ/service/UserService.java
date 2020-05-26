@@ -7,7 +7,7 @@ import springboot.learning.aop.aspectJ.model.User;
  *
  * AspectJ 注解AOP编程接口——切面
  */
-public interface UserInterface {
+public interface UserService {
 
     void printUser(User user);
 }

@@ -1,14 +1,16 @@
 package springboot.learning.aop.aspectJ.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author mrliz
  */
-@Data
+@Getter
+@Setter
 public class User {
 
-    private Integer id;
+    private Long id;
 
     private String userName;
 
