@@ -2,6 +2,8 @@ package springboot.learning.aop.aspectJ.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import springboot.learning.aop.aspectJ.validator.UserValidator;
+import springboot.learning.aop.aspectJ.validator.impl.UserValidatorImpl;
 
 /**
  * @author mrliz
@@ -52,4 +54,14 @@ public class MyAspect {
 
         System.out.println("around after.......");
     }
+
+    /**
+     * 增强UserService接口
+     * DeclareParents:引入新的类来增强服务
+     *  value：指向要增强的目标对象
+     *  defaultImpl：引入增强功能的类，这里配置为UserValidatorImpl，用来校验用户是否为空的功能
+     */
+    @DeclareParents(value = "springboot.learning.aop.aspectJ.service.impl.UserServiceImpl+",
+            defaultImpl = UserValidatorImpl.class)
+    public UserValidator userValidator;
 }

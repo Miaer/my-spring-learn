@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import springboot.learning.aop.aspectJ.model.User;
 import springboot.learning.aop.aspectJ.service.UserService;
+import springboot.learning.aop.aspectJ.validator.UserValidator;
 
 /**
  * @author mrliz
@@ -31,6 +32,23 @@ public class UserController {
         // 如果为null，则执行afterthrowing方法
         userService.printUser(user);
 
+        return user;
+    }
+
+    @RequestMapping("/vp")
+    @ResponseBody
+    public User validateAndPrint(Long id,String userName, String note){
+        User user = new User();
+
+        user.setId(id);
+        user.setUserName(userName);
+        user.setNote(note);
+
+        UserValidator userValidator = (UserValidator) userService;
+
+        if (userValidator.validate(user)){
+            userService.printUser(user);
+        }
         return user;
     }
 }

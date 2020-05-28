@@ -57,6 +57,9 @@ execution(* springboot.learning.aop.aspectJ.service.impl.UserInterfaceImpl.print
 
 上述表达式中，"&&"表示并且，bean中定义的字符串为Spring bean名称的限定
     
+环绕通知
+--
+环绕通知会在目标方法执行之前执行 ，会在目标方法结束之前结束
 
-    
-    
+引入
+--
