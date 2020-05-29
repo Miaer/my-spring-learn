@@ -1,7 +1,9 @@
 package springboot.learning.aop.aspectJ.aspect;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import springboot.learning.aop.aspectJ.model.User;
 import springboot.learning.aop.aspectJ.validator.UserValidator;
 import springboot.learning.aop.aspectJ.validator.impl.UserValidatorImpl;
 
@@ -64,4 +66,15 @@ public class MyAspect {
     @DeclareParents(value = "springboot.learning.aop.aspectJ.service.impl.UserServiceImpl+",
             defaultImpl = UserValidatorImpl.class)
     public UserValidator userValidator;
+
+    /**
+     * 通知获取参数
+     * @param point
+     * @param user
+     */
+    @Before("pointCut() && args(user)")
+    public void beforeParam(JoinPoint point, User user){
+        Object[] args = point.getArgs();
+        System.out.println("before param.........");
+    }
 }
