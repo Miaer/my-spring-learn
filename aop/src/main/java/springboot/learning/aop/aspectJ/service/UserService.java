@@ -10,4 +10,6 @@ import springboot.learning.aop.aspectJ.model.User;
 public interface UserService {
 
     void printUser(User user);
+
+    void manyAspects();
 }

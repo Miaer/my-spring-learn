@@ -51,4 +51,15 @@ public class UserController {
         }
         return user;
     }
+
+    /**
+     * 测试多个切面
+     * @return
+     */
+    @RequestMapping("/manyAspects")
+    @ResponseBody
+    public String manyAspects(){
+        userService.manyAspects();
+        return "manyAspects";
+    }
 }

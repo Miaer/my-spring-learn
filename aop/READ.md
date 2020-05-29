@@ -63,3 +63,48 @@ execution(* springboot.learning.aop.aspectJ.service.impl.UserInterfaceImpl.print
 
 引入
 --
+校验用户信息为空，抛出异常。
+
+通知获取参数
+--
+能够在AOP的任何地方获取用户的参数。
+
+织入
+--
+织入是一个生成动态代理对象并且将切面和目标对象方法编织成为约定流程的过程。
+动态代理有多种实现方式，本次案例都是使用的接口+实现类的模式，这也是spring推荐的方式，还有CGLIB、javassist、ASM等。
+对JDK而言，被代理对象必须拥有接口，CGLIB不做要求，默认情况下，Spring会按照这样的一条规则处理：
+    当你需要使用AOP的类拥有接口时，它会以JDK动态代理运行，否则以CGLIB运行。
+    
+多个切面
+--
+Spring支持多个切面运行，在组织多个切面时，我们需要知道其运行顺序。
+首先创建三个切面类：
+    MyAspect1,MyAspect2,MyAspect3
+
+执行顺序
+---
+bean的执行顺序
+--
+多个切面bean的执行顺序，在本次版本中，推测默认执行顺序与bean的加载顺序相同，但是这种是不稳定的
+使用Order注解，标注在切面类上，来规定切面的执行顺序
+    
+    @Order(1)
+    @Order(2)
+    @Order(3)
+
+通知的执行顺序
+--
+测试的执行结果如下所示：
+
+    MyAspect1 before
+    MyAspect2 before
+    MyAspect3 before
+    测试多个切面的顺序
+    MyAspect3 after
+    MyAspect3 afterReturning
+    MyAspect2 after
+    MyAspect2 afterReturning
+    MyAspect1 after
+    MyAspect1 afterReturning
+可以看到前置通知(before)都是从小到大运行，后置通知(after)都是从大到小运行，这是典型的责任链模式的顺序。
