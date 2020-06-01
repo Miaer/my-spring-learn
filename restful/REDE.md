@@ -62,6 +62,15 @@ REST风格的一些误区
         PUT users?userName=user_name&note=note
        REST风格的建议是采用
         PUT users/{userName}/note
-    
 
-    
+使用Spring MVC开发REST风格端点
+--
+
+注解
+--
+
+    @GetMapping
+    @PostMapping
+    @PutMapping
+    @PatchMapping
+    @DeleteMapping
