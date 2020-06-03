@@ -69,8 +69,14 @@ REST风格的一些误区
 注解
 --
 
-    @GetMapping
-    @PostMapping
-    @PutMapping
-    @PatchMapping
-    @DeleteMapping
+    @GetMapping 只获取get请求
+    @PostMapping 获取post请求
+    @PutMapping 获取put请求
+    @PatchMapping 获取patch请求
+    @DeleteMapping 获取delete请求
+    @PathVariable   将URI地址的参数获取
+    @RequestBody    将请求体为JSON的数据转为Java对象
+    @ResponseBody   Spring MVC就会通过MappingJackson2HttpMessageConverter最终将数据转为JSON数据集
+    @RestController REST风格，将整个控制器都默认转换为JSON数据集。@Controller + @ResponseBody = RestController 
+    
+    实际还有其他类型的数据，如一幅图片、一段视频。Spring提供了一个协商的视图解析器——ContentNegotiatingViewResolver。
