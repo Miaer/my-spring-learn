@@ -80,3 +80,11 @@ REST风格的一些误区
     @RestController REST风格，将整个控制器都默认转换为JSON数据集。@Controller + @ResponseBody = RestController 
     
     实际还有其他类型的数据，如一幅图片、一段视频。Spring提供了一个协商的视图解析器——ContentNegotiatingViewResolver。
+    
+    
+异常处理
+--
+@ControllerAdvice   定义控制器通知
+@ExceptionHandler   异常发生的处理方法
+
+演示查找失败异常
