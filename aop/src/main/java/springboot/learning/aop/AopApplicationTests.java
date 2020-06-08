@@ -19,7 +19,7 @@ class AopApplicationTests {
 
         proxy.sayHello("zhangsan");
 
-        System.out.println("\n##########  name is null");
+        System.out.println("n##########  name is null");
 
         proxy.sayHello("Lisi");
 
