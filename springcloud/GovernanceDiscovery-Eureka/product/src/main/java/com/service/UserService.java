@@ -34,6 +34,6 @@ public interface UserService {
      * @param id
      * @return
      */
-    @PostMapping("/user/{userName}")
+    @PostMapping("/update/{userName}")
     Map<String,Object> updateUser(@PathVariable("userName") String userName, @RequestHeader("id")Long id);
 }

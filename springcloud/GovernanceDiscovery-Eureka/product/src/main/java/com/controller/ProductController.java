@@ -91,7 +91,8 @@ public class ProductController {
         for (int i = 1; i <= 10; i++) {
             Long id = (long)(i + 1);
 
-            map = userService.updateUser("user_name_" + id, id);
+            String userName = "user_name_" + id;
+            map = userService.updateUser(userName, id);
         }
 
         return map;
