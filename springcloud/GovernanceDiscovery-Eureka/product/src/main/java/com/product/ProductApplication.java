@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * @author mrliz
  */
-@SpringBootApplication(scanBasePackages = "com.product")
+@SpringBootApplication(scanBasePackages = "com")
 public class ProductApplication {
 
 
