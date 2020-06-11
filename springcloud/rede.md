@@ -45,4 +45,19 @@ user/1去获取用户id为1的信息，而真实的服务是http://localhost:800
 对于业务，往往需要各个微服务之间相互地协助才能完成。其中使用REST风格相互调用。Spring Cloud提供了Ribbon和Feign组件来帮助我们完成这些功能。通过
 它们，各个微服务之间就能相互调用，并且默认实现了负载均衡。
 
+###Feign声明式调用
+上节使用RestTemplate但有时某个微服务REST风格请求需要多次调用。如果多次调用，使用RestTemplate并非那么友好。因为除了要编写URL，还要注意参数的
+组装和结果的返回等操作。为了克服这些不友好，除了Ribbon外，Spring Cloud还提供了声明式调用组件——Feign。  
+Feign是基于接口的编程方式，开发者只需要声明接口和配置注解，在调度接口方法时，Spring Cloud就根据配置来调度对应的REST风格的请求，从其他微服务系
+统中获取数据。  
+@EnableFeignClients注解用来启用Feign，并制定对应的包扫描，用来加入接口声明。仅仅是一个接口声明，不需要实现类。  
+
+@FeignClient("USER") 代表这是一个Feign客户端，配置的"USER"指向用户微服务，这样Feign就会知道向用户微服务请求，并实现负载均衡。    
+@GetMapping 代表启用HTTP的GET请求用户微服务  
+@PathVariable 从URL中获取参数，这是Spring MVC的规则
+
+之所以使用Spring MVC的规则，则是为了降低读者的学习成本。  
+
+在ProductController中加入UserService接口对象的注入，并调度用户微服务的REST端点。
+
 ####Ribbon客户端负载均衡

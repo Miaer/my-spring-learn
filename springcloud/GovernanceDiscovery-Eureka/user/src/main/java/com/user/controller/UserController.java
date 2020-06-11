@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author mrliz
  */
@@ -37,5 +40,34 @@ public class UserController {
         userPo.setNote("note_" + id);
 
         return userPo;
+    }
+
+    /**
+     * 新增用户，POST请求，以body形式传递
+     * @param userPo
+     * @return
+     */
+    @PostMapping("/insert")
+    public Map<String,Object> insertUser(@RequestBody UserPo userPo){
+        HashMap<String, Object> map = new HashMap<>();
+
+        map.put("success",true);
+        map.put("message","插入用户信息【" + userPo.getUserName() + "】成功");
+        return map;
+    }
+
+    /**
+     * 修改用户名，POST请求，其中用户编号使用请求的形式传递
+     * @param userName
+     * @param id
+     * @return
+     */
+    @PostMapping("/update/{userName}")
+    public Map<String,Object> updateUsername(@PathVariable("userName")String userName,@RequestHeader("id")Long id){
+        HashMap<String, Object> map = new HashMap<>();
+
+        map.put("success",true);
+        map.put("message","更新用户【"+id+"】名称【" + userName + "】成功");
+        return map;
     }
 }
