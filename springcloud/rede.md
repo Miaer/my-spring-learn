@@ -81,6 +81,7 @@ Feign是基于接口的编程方式，开发者只需要声明接口和配置注
             name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")})  
 设置超时处理方法和设置超时时间
    
-            
+####启用Hystrix仪表盘
+Spring Cloud提供了仪表盘(Dashboard)进行监控断路情况，从而让开发者监控可能出现的问题。            
 
 ####Ribbon客户端负载均衡

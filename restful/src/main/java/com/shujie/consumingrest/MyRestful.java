@@ -31,7 +31,7 @@ public class MyRestful {
     public String toString() {
         return "MyRestful{" +
                 "id=" + id +
-                ", content='" + content + ''' +
+                ", content='" + content + '\'' +
                 '}';
     }
 }
