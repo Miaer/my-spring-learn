@@ -70,4 +70,21 @@ public class UserController {
         map.put("message","更新用户【"+id+"】名称【" + userName + "】成功");
         return map;
     }
+
+    /**
+     * hystrix降级服务超时方法
+     * @return
+     */
+    @GetMapping("/timeOut")
+    public String timeOut(){
+
+        long ms = (long)(3000L * Math.random());
+
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "熔断测试";
+    }
 }

@@ -1,7 +1,8 @@
-package com.product;
+package com;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,8 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication(scanBasePackages = "com")
 // 启用Feign
 @EnableFeignClients(basePackages = "com")
+// 启动断路器
+@EnableCircuitBreaker
 public class ProductApplication {
 
 

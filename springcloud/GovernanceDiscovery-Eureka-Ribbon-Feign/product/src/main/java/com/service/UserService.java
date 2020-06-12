@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 /**
+ * Feign接口
  * @author mrliz
  */
 // 指定服务ID
@@ -36,4 +37,8 @@ public interface UserService {
      */
     @PostMapping("/update/{userName}")
     Map<String,Object> updateUser(@PathVariable("userName") String userName, @RequestHeader("id")Long id);
+
+
+    @GetMapping("/timeOut")
+    public String testTimeout();
 }

@@ -74,4 +74,13 @@ Feign是基于接口的编程方式，开发者只需要声明接口和配置注
 处理限制请求的方式的策略很多，如限流、缓存等。在此介绍最为常见的降级服务。降级服务就是当请求其他微服务出现超时(timeout)或者发生故障时，就会使用自
 身服务其他的方法响应。在Spring Cloud中断路器是由NetFlix的Hystrix实现的，它默认监控微服务之间的调用超时时间为2000ms(2s)，如果超时，他会根据
 你的配置使用其他方法进行响应。
+
+@EnableCircuitBreaker 告诉Spring启动断路器
+
+@HystrixCommand(fallbackMethod = "error",commandProperties = {@HystrixProperty(
+            name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")})  
+设置超时处理方法和设置超时时间
+   
+            
+
 ####Ribbon客户端负载均衡

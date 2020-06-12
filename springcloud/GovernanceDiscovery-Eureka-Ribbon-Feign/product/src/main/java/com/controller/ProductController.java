@@ -1,6 +1,7 @@
 package com.controller;
 
-
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.service.UserService;
 import com.user.pojo.UserPo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,6 +97,36 @@ public class ProductController {
         }
 
         return map;
+    }
+
+    /**
+     * Ribbon断路,默认超时时间为2000ms。
+     * 只要请求该方法时，超时过了2000ms就会走error异常处理方法
+     *
+     * commandProperties = {@HystrixProperty(
+     *             name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")}
+     * 设置超时时间为3s
+     * @return
+     */
+    @HystrixCommand(fallbackMethod = "error",commandProperties = {@HystrixProperty(
+            name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")})
+    @GetMapping("/circuitBreaker1")
+    public String circuitBreaker1(){
+        return restTemplate.getForObject("http://USER/timeOut",String.class);
+    }
+
+    /**
+     * Feign断路
+     * @return
+     */
+    @GetMapping("/circuitBreaker2")
+    @HystrixCommand(fallbackMethod = "error")
+    public String circuitBreaker2(){
+        return userService.testTimeout();
+    }
+
+    private String error(){
+        return "超时错误";
     }
 
 }
