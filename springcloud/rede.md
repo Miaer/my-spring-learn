@@ -82,6 +82,17 @@ Feign是基于接口的编程方式，开发者只需要声明接口和配置注
 设置超时处理方法和设置超时时间
    
 ####启用Hystrix仪表盘
-Spring Cloud提供了仪表盘(Dashboard)进行监控断路情况，从而让开发者监控可能出现的问题。            
+Spring Cloud提供了仪表盘(Dashboard)进行监控断路情况，从而让开发者监控可能出现的问题。  
+![image](/photo/hystrix_dashboard.jpg)
+从上图中可以看到,它支持三种监控，前两种是基于Turibine的，一种是默认级缺，另一种是指定集群，第三种是单点监控。，在本节中，简单讨论下单点监控。  
+这里有两个框，一个是轮询时间，另一个是标题，也就是仪表盘页面的标题是什么。  
+从单点监控的说明看出，只需要给出https://hystrix-app:port/actuator/hystrix.stream格式的URL给仪表盘即可。上面已经在产品微服务中使用了
+Hystrix，还需要引入Spring boot的监控才可以，所以在产品微服务中先引入spring-boot-starter-actuator的依赖。这样还不够，因为对于Actuator端点
+是不暴露的，为了使端点暴露，还需要再产品微服务的application.properties上添加属性：
+
+    management.endpoints.web.exposure.include==health,info,hystrix.stream
+    
+这里的management.endpoints.web.exposure.include==health,info,hystrix.stream代表Actuator监控对外暴露的端点，再默认情况下，他只会暴
+露health和info端点，这里增加了hystrix.stream端点，这样仪表盘才能督导HTTP协议下的hystrix信息流。
 
 ####Ribbon客户端负载均衡
