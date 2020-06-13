@@ -1,9 +1,9 @@
-package com.controller;
+package com.product.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import com.service.UserService;
-import com.user.pojo.UserPo;
+import com.product.service.UserService;
+import com.product.pojo.UserPo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -109,7 +109,7 @@ public class ProductController {
      * @return
      */
     @HystrixCommand(fallbackMethod = "error",commandProperties = {@HystrixProperty(
-            name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")})
+            name = "execution.isolation.thread.timeoutInMilliseconds",value = "2000")})
     @GetMapping("/circuitBreaker1")
     public String circuitBreaker1(){
         return restTemplate.getForObject("http://USER/timeOut",String.class);

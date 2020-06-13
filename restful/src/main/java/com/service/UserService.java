@@ -1,4 +1,4 @@
-//package com.service;
+//package com.product.service;
 //
 //import com.user.pojo.UserPo;
 //import org.springframework.cloud.openfeign.FeignClient;

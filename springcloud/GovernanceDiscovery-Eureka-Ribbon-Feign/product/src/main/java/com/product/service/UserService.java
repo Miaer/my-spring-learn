@@ -1,6 +1,6 @@
-package com.service;
+package com.product.service;
 
-import com.user.pojo.UserPo;
+import com.product.pojo.UserPo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
